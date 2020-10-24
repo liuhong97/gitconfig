@@ -1,0 +1,16 @@
+
+###会员项目的端口号
+server:
+  port: 8018
+###服务别名----服务注册到注册中心名称 
+spring:
+  application:
+    name: app-itmayiedu-member
+  cloud:
+    inetutils:
+      timeout-seconds: 6
+eureka:
+  client:
+    service-url:
+    ##### 当前会员服务注册到eureka服务地址
+      defaultZone: http://localhost:8100/eureka/,http://localhost:9100/eureka/
