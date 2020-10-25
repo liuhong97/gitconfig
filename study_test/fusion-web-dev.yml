@@ -1,0 +1,58 @@
+###会员项目的端口号
+server:
+  port: 8082
+###服务别名----服务注册到注册中心名称 
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: fusion-web
+   #数据库连接信息
+  datasource:
+    username: root
+    password: jack987
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/citex_fusion?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE&serverTimezone=UTC&useSSL=false
+    druid:
+        initial-size: 5
+        max-active: 20
+        min-idle: 5
+        test-on-borrow: true
+        max-wait: -1
+        min-evictable-idle-time-millis: 30000
+        max-evictable-idle-time-millis: 30000
+        time-between-eviction-runs-millis: 0  
+  cloud:
+    config:
+    ####读取后缀
+      profile: dev
+      ####读取config-server注册地址
+      discovery:
+        service-id: config-server
+        enabled: true
+        
+         
+eureka:
+  client:
+    service-url:
+    ##### 当前会员服务注册到eureka服务地址
+      defaultZone: http://localhost:8762/eureka
+    ### 需要将我的服务注册到eureka上
+    register-with-eureka: false
+    ####需要检索服务
+    fetch-registry: false
+
+###设置feign客户端超时时间 
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 15000
+        readTimeout: 15000
+ 
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070
+       
+liuhong:
+  usersName: jack
